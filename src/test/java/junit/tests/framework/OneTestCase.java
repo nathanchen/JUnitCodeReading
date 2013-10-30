@@ -14,4 +14,8 @@ public class OneTestCase extends TestCase {
 
     public void testCase(int arg) {
     }
+
+    // if names are the same, they are counted as one, same test
+    public void testCase(int arg, int aa) {
+    }
 }

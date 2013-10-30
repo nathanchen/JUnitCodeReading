@@ -6,4 +6,6 @@ package junit.tests.framework;
 public class NoTestCaseClass extends Object {
     public void testSuccess() {
     }
+    public void testCase(int arg) {
+    }
 }

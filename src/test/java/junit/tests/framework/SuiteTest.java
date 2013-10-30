@@ -1,11 +1,11 @@
 package junit.tests.framework;
 
-import java.util.Collections;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
+
+import java.util.Collections;
 
 /**
  * A fixture for testing the "auto" test suite feature.
@@ -44,20 +44,26 @@ public class SuiteTest extends TestCase {
     public void testInheritedTests() {
         TestSuite suite = new TestSuite(InheritedTestCase.class);
         suite.run(fResult);
+//        System.out.println("fResult.runCount(): " + fResult.runCount());
         assertTrue(fResult.wasSuccessful());
+        System.out.println("testInheritedTests fResult.runCount(): " + fResult.runCount());
+        System.out.println("testInheritedTests suite.countTestCases(): " + suite.countTestCases());
         assertEquals(2, fResult.runCount());
     }
 
     public void testNoTestCaseClass() {
         Test t = new TestSuite(NoTestCaseClass.class);
         t.run(fResult);
+        System.out.println("testNoTestCaseClass fResult.runCount(): " + fResult.runCount());
         assertEquals(1, fResult.runCount());  // warning test
+        System.out.println("testNoTestCaseClass fResult.wasSuccessful(): " + fResult.wasSuccessful());
         assertTrue(!fResult.wasSuccessful());
     }
 
     public void testNoTestCases() {
         Test t = new TestSuite(NoTestCases.class);
         t.run(fResult);
+        System.out.println("testNoTestCases fResult.runCount(): " + fResult.runCount());
         assertTrue(fResult.runCount() == 1);  // warning test
         assertTrue(fResult.failureCount() == 1);
         assertTrue(!fResult.wasSuccessful());

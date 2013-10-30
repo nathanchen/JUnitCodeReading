@@ -147,6 +147,7 @@ public class Description implements Serializable {
     }
 
     private Description(Class<?> clazz, String displayName, Serializable uniqueId, Annotation... annotations) {
+        // input String null or empty
         if ((displayName == null) || (displayName.length() == 0)) {
             throw new IllegalArgumentException(
                     "The display name must not be empty.");
