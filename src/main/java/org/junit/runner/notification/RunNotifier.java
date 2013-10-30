@@ -1,14 +1,14 @@
 package org.junit.runner.notification;
 
-import static java.util.Arrays.asList;
+import org.junit.internal.AssumptionViolatedException;
+import org.junit.runner.Description;
+import org.junit.runner.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.junit.internal.AssumptionViolatedException;
-import org.junit.runner.Description;
-import org.junit.runner.Result;
+import static java.util.Arrays.asList;
 
 /**
  * If you write custom runners, you may need to notify JUnit of your progress running tests.

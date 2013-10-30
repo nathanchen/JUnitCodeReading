@@ -111,6 +111,7 @@ public class Description implements Serializable {
     }
 
     private static String formatDisplayName(String name, String className) {
+        // format String
         return String.format("%s(%s)", name, className);
     }
 

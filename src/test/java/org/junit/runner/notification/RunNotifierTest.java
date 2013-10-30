@@ -1,16 +1,14 @@
 package org.junit.runner.notification;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.junit.Test;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 public class RunNotifierTest {
     private final RunNotifier fNotifier = new RunNotifier();
@@ -18,7 +16,7 @@ public class RunNotifierTest {
     @Test
     public void notifiesSecondListenerIfFirstThrowsException() {
         FailureListener failureListener = new FailureListener();
-        fNotifier.addListener(new CorruptListener());
+        fNotifier.addListener(new CountingListener());
         fNotifier.addListener(failureListener);
         fNotifier.fireTestFailure(new Failure(null, null));
         assertNotNull("The FailureListener registered no failure.",
