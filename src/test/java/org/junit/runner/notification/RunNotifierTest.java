@@ -16,8 +16,11 @@ public class RunNotifierTest {
     @Test
     public void notifiesSecondListenerIfFirstThrowsException() {
         FailureListener failureListener = new FailureListener();
+        // add two listeners to fNotifer
         fNotifier.addListener(new CountingListener());
         fNotifier.addListener(failureListener);
+        // add a Failure object to fNotifier
+        // the Failure should be notified to all listeners
         fNotifier.fireTestFailure(new Failure(null, null));
         assertNotNull("The FailureListener registered no failure.",
                 failureListener.failure);
