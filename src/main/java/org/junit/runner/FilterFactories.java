@@ -75,6 +75,7 @@ public class FilterFactories {
     static FilterFactory createFilterFactory(Class<? extends FilterFactory> filterFactoryClass)
             throws FilterNotCreatedException {
         try {
+            // return an instance of a class, which implements FilterFactory interface
             return filterFactoryClass.getConstructor().newInstance();
         } catch (Exception e) {
             throw new FilterNotCreatedException(e);

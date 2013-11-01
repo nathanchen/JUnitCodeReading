@@ -1,14 +1,14 @@
 package org.junit.runners.model;
 
+import org.junit.experimental.theories.ParameterSignature;
+import org.junit.internal.runners.model.ReflectiveCallable;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.List;
-
-import org.junit.experimental.theories.ParameterSignature;
-import org.junit.internal.runners.model.ReflectiveCallable;
 
 /**
  * Represents a method on a test class to be invoked at the appropriate point in
@@ -134,6 +134,8 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
         new NoGenericTypeParametersValidator(fMethod).validate(errors);
     }
 
+    // if Class Child extends Class Parent, and the method in Child have the same name, input parameter
+    // with the Parent. The method in Parent should be ignored.
     @Override
     public boolean isShadowedBy(FrameworkMethod other) {
         if (!other.getName().equals(getName())) {
