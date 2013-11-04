@@ -1,21 +1,17 @@
 package org.junit.runners.model;
 
-import static java.lang.reflect.Modifier.isStatic;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.internal.MethodSorter;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.internal.MethodSorter;
+import static java.lang.reflect.Modifier.isStatic;
 
 /**
  * Wraps a class to be run, providing method validation and annotation searching
@@ -62,6 +58,7 @@ public class TestClass {
             if (member.isShadowedBy(members)) {
                 return;
             }
+            // process @Before and @BeforeClass first
             if (runsTopToBottom(type)) {
                 members.add(0, member);
             } else {

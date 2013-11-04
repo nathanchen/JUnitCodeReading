@@ -1,5 +1,7 @@
 package junit.framework;
 
+import org.junit.internal.MethodSorter;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Constructor;
@@ -10,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
-
-import org.junit.internal.MethodSorter;
 
 /**
  * A <code>TestSuite</code> is a <code>Composite</code> of Tests.
@@ -101,6 +101,8 @@ public class TestSuite implements Test {
 
     /**
      * Converts the stack trace into a string
+     *
+     * converts a throwable object into a string
      */
     private static String exceptionToString(Throwable t) {
         StringWriter stringWriter = new StringWriter();
