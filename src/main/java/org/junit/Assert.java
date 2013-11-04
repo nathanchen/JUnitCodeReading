@@ -21,6 +21,8 @@ import org.junit.internal.InexactComparisonCriteria;
  * @see AssertionError
  * @since 4.0
  */
+
+// quite usefull when printing log file
 public class Assert {
     /**
      * Protect constructor since it is a static only class
@@ -119,6 +121,7 @@ public class Assert {
         }
     }
 
+    // if expected == null ... else ...
     private static boolean equalsRegardingNull(Object expected, Object actual) {
         if (expected == null) {
             return actual == null;
